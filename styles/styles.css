@@ -56,6 +56,10 @@ li {
 
 @media (max-width: 600px) {
 	img {
-		width: 300px; /* Nuevo ancho para pantallas más pequeñas */
+		width: 300px;
+	}
+	
+	.columns {
+		column-count: 1;
 	}
 }
