@@ -55,7 +55,7 @@ li {
 }
 
 @media (max-width: 600px) {
-	img {
+	.rice {
 		width: 300px;
 	}
 	
