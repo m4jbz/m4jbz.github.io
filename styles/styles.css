@@ -28,7 +28,7 @@ h2 {
 	color: sandybrown;
 }
 
-.links {
+a {
 	color: #33bbff;
 }
 
@@ -44,4 +44,18 @@ ul {
 
 li {
 	margin: 0.5em 0;
+}
+
+.contenedor {
+	text-align: center;
+}
+.contenedor img {
+	display: block;
+	margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+	img {
+		width: 300px; /* Nuevo ancho para pantallas más pequeñas */
+	}
 }
