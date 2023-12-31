@@ -1,0 +1,47 @@
+body {
+	background-color: #1b1b1b;
+	color: #ffffff;
+	font-size: 1em;
+	font-family: C059, Serif;
+	width: 85%;
+	max-width: 50em;
+	margin: 1em auto;
+	text-align: left;
+}
+
+.columns {
+    column-count: 2; /* Divide en dos columnas */
+}
+
+.block {
+	display: inline-block;
+	max-width: 99%;
+}
+
+h1 {
+	font-size: 2.5em;
+	margin: 0.6em 0 0.2em 0;
+	color: chocolate;
+}
+
+h2 {
+	color: sandybrown;
+}
+
+.links {
+	color: #33bbff;
+}
+
+footer {
+	text-align: center;
+	padding: 20px;
+}
+
+ul {
+	margin: 0 1em;
+	padding: 0;
+}
+
+li {
+	margin: 0.5em 0;
+}
