@@ -24,8 +24,42 @@ h1 {
 	color: chocolate;
 }
 
-h2 {
+h2, h3 {
 	color: sandybrown;
+}
+
+.bigprex {
+	height: 85px;
+	display: flex;
+  align-items: center;
+	background-color: #282828;
+	border-radius: 0.3rem;
+	overflow-x: auto;
+}
+
+.bigpre {
+	height: 72px;
+	display: flex;
+  align-items: center;
+	background-color: #282828;
+	border-radius: 0.3rem;
+	overflow-x: auto;
+}
+
+pre {
+	height: 40px;
+	display: flex;
+  align-items: center;
+	background-color: #282828;
+	border-radius: 0.3rem;
+	overflow-x: auto;
+}
+
+code {
+	padding: 1em;
+	display: block;
+	font-size: small;
+	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 a {
