@@ -1,3 +1,3 @@
 # Repository for my website
 
-yeah that's it.
+In this website I'll post many of my projects or things that I do related with programming.
