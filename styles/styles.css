@@ -62,7 +62,7 @@ a {
 }
 
 .columns {
-    column-count: 2; /* Divide en dos columnas */
+    column-count: 2; 
 }
 
 .block {
@@ -89,7 +89,7 @@ a {
 }
 
 @media (max-width: 600px) {
-	.rice {
+	.rice, .snake {
 		width: 300px;
 	}
 	
