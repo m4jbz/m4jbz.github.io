@@ -105,6 +105,13 @@ a {
     text-decoration: none;
 }
 
+.demos {
+    font-kerning: normal;
+    font-size: 16px;
+    color: #73c936;
+    text-decoration: none;
+}
+
 .links {
     margin-right: 25px;
     margin-bottom: 30px
