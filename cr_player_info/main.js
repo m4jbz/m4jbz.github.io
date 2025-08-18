@@ -13,8 +13,8 @@ form.addEventListener("submit", async (e) => {
   nameDiv.innerHTML = "";
 
   try {
-    // const deckRes = await fetch(`https://cr-player-info.onrender.com/player/${encodedTag}`);
-    const deckRes = await fetch(`http://localhost:3000/player/${encodedTag}`);
+    const deckRes = await fetch(`https://cr-player-info.onrender.com/player/${encodedTag}`);
+    //const deckRes = await fetch(`http://localhost:3000/player/${encodedTag}`);
     if (!deckRes.ok) throw new Error(await deckRes.text());
     const deckData = await deckRes.json();
 
@@ -31,8 +31,8 @@ form.addEventListener("submit", async (e) => {
       deckContainer.appendChild(cardDiv);
     });
 
-    // const logRes = await fetch(`https://cr-player-info.onrender.com/player/${encodedTag}/battlelog`);
-    const logRes = await fetch(`http://localhost:3000/player/${encodedTag}/battlelog`);
+    const logRes = await fetch(`https://cr-player-info.onrender.com/player/${encodedTag}/battlelog`);
+    // const logRes = await fetch(`http://localhost:3000/player/${encodedTag}/battlelog`);
     if (!logRes.ok) throw new Error(await logRes.text());
     const battlelog = await logRes.json();
 
