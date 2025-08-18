@@ -13,21 +13,26 @@ form.addEventListener("submit", async (e) => {
   nameDiv.innerHTML = "";
 
   try {
-    const deckRes = await fetch(`https://cr-player-info.onrender.com/player/${encodedTag}`);
+    // const deckRes = await fetch(`https://cr-player-info.onrender.com/player/${encodedTag}`);
+    const deckRes = await fetch(`http://localhost:3000/player/${encodedTag}`);
     if (!deckRes.ok) throw new Error(await deckRes.text());
     const deckData = await deckRes.json();
 
     nameDiv.innerHTML = `<strong>${deckData.name}</strong><br>`;
 
+    let i = 0;
+
     deckData.currentDeck.forEach(card => {
-      const imgUrl = card.iconUrls.evolutionMedium || card.iconUrls.medium;
+      i++;
+      const imgUrl = (card.evolutionLevel && i <= 2) ? card.iconUrls.evolutionMedium : card.iconUrls.medium;
       const cardDiv = document.createElement("div");
       cardDiv.className = "card";
       cardDiv.innerHTML = `<img src="${imgUrl}" alt="${card.name}"><p>${card.name}</p>`;
       deckContainer.appendChild(cardDiv);
     });
 
-    const logRes = await fetch(`https://cr-player-info.onrender.com/player/${encodedTag}/battlelog`);
+    // const logRes = await fetch(`https://cr-player-info.onrender.com/player/${encodedTag}/battlelog`);
+    const logRes = await fetch(`http://localhost:3000/player/${encodedTag}/battlelog`);
     if (!logRes.ok) throw new Error(await logRes.text());
     const battlelog = await logRes.json();
 
