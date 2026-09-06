@@ -1,0 +1,23 @@
+.terminal {
+    --color: grey;
+    --background: black;
+    --link-color: skyblue;
+    --animation: terminal-underline;
+    /*--animation: terminal-glow; Can't apply 2 animations*/
+    /*--glow: 1.5;*/
+    --line-thickness: 3;
+    /*--font: msdos*/
+    /*--size: 2.0*/
+}
+
+/* Cursor Color*/ 
+.cmd { 
+    --color: gray;
+}
+
+/*
+@font-face {
+    font-family: msdos;
+    src: url("https://cdn.jsdelivr.net/gh/jcubic/static/assets/dos-vga.ttf");
+}
+*/

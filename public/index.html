@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w2.org/1999/xhtml">
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><html lang="en">
+    <head>
+	<meta name="generator" content="Hugo 0.165.0">
+            <meta charset="utf-8" />
+    <title>terminalcv </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My terminal cv">
+    <meta property="og:title" content="terminalcv" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://localhost:1313/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href=""/>
+    <link rel="canonical" href="http://localhost:1313/" />    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.45.2/js/jquery.terminal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/less.min.js"></script>
+    <script src="https://unpkg.com/jquery.terminal/js/autocomplete_menu.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.42.0/css/jquery.terminal.min.css" rel="stylesheet"/>
+    
+
+    <style>
+        body {
+            width: 100%;
+            font-size: 18px;
+        }
+    </style>
+
+
+
+
+    </head>
+        <body>
+        
+<script> 
+jQuery(document).ready(function($) {
+    var animation = false;
+
+    var postFilenames = [
+        
+        "offline_media",
+        
+    ];
+
+    var lessCommands = [
+        "whois",
+        "social",
+        
+        "education",
+        "skills",
+        
+        "languages",
+        "projects",
+        "publications",
+        "certifications",
+        "newcommand",
+        
+        "all"
+    ];
+
+    var commands = {
+        help: "shows help",
+        less: {
+            description: "Use less as output method for commands",
+            args: [
+                ...lessCommands,
+                ...postFilenames
+            ]
+        },
+        whois: "list basic details",
+        
+        social: "list social networks",
+        
+        
+        
+        education: "list education",
+        
+        
+        skills: "list core skills",
+        
+        
+        
+        languages: "list spoken languages",
+        
+        
+        projects: "list projects",
+        
+        
+        publications: "list publications",
+        
+         
+            certifications: "list certifications",
+        
+        
+        
+            "newcommand": "This Section can have a different command name",
+        
+        
+        
+            version: "Current version",
+        
+        
+        
+            posts: "List all posts",
+            ls: "List all posts",
+            cat: {
+                description: "Open a post",
+                args: postFilenames
+             },
+        
+        all: "Show all details about me",
+    };
+
+    function progressBar(number) {
+        var barLength = Math.round(number / 10);
+        var barFilled = Array(barLength + 1).join("&#9611;");
+        var barBlank= Array(11 - barLength).join("&#9617;");
+
+        return barFilled + barBlank
+    }
+
+    
+    function padKey(key, length) {
+        return key + ' '.repeat(length - key.length);
+    }
+
+    function commandsHelp() {
+        let longestKeyLength = Math.max(...Object.keys(commands).map(key => key.length));
+
+        let helpText = ""
+        for (let key in commands) {
+          if (commands.hasOwnProperty(key)) {
+              commandValue = commands[key];
+              description = typeof commandValue === 'string' ? commandValue : commandValue.description;
+              helpText += ` ${padKey(key, longestKeyLength)}\t${description}\n`
+          }
+        }
+        return helpText
+    }
+
+    var help = '\n[[b;white;]usage:]\n' +
+                '\n <command>'.padEnd(17) + '- execute the command\n' +
+                ' less <command>'.padEnd(16) + '- use less to display the output\n\n' +
+                
+                  ' less <post>'.padEnd(16) + '- use less to display a post\n' +
+                  ' cat <post>'.padEnd(16) + '- use cat to print a post\n' +
+                
+                '\n[[b;white;]Available commands:]\n' + 
+               commandsHelp();
+
+    var whois = [
+         
+            '[[b;white;]Name:]          [[b;white;]Marco Juarez\n]' + 
+            '[[b;white;]Profession:]\t[[b;white;]Computer Engineer Student\n]' +
+            '[[b;white;]Location:]\t\t[[b;white;]Mexico\n]' +
+            
+            
+            '[[b;white;]Email:]\t\t\tmarcoajb05@proton.me\n' +
+            
+            
+            '[[b;white;]Homepage:]      https:\/\/m4jbz.github.io\n' +
+            
+            
+            '[[b;white;]I\u0027m Marco, computer engineer at Instituo Tecnológico de Iguala.\n]' +
+            
+            '\r',
+        
+    ]; 
+
+    function social() { 
+        var hideName = false;
+        let sMap = { 
+             
+                
+                "github": "https:\/\/github.com\/m4jbz",
+                
+                "Discord": "https:\/\/discord.com\/users\/marco_271828",
+                
+            
+        };
+
+        
+        socialText = []
+        for (let key in sMap) {
+            if (sMap.hasOwnProperty(key)) {
+                if (hideName) {
+                    socialText.push(sMap[key]);
+                } else { 
+                    let longestKeyLength = Math.max(...Object.keys(sMap).map(key => key.length));
+                    socialText.push(`${padKey(key, longestKeyLength)}\t${sMap[key]}`)
+                };
+            }
+        }
+
+        return socialText
+    };
+
+    function posts(term) {
+      
+        
+        $.ajax({
+            url: "/posts/index.xml",
+            type: 'GET',
+            dataType: 'xml',
+            success: function(xml) {
+                
+                let output = '\n';
+                
+                $(xml).find('item').each(function() {
+                    let title = $(this).find('title').text();
+                    let filename = $(this).find('filename').text();
+                    let author = $(this).find('author').text() || "unknown";
+                    let pubDate = $(this).find('pubDate').text();
+                    
+                    let dateObj = new Date(pubDate);
+                    let date = dateObj.toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: '2-digit' 
+                    });
+                    let line = `-r--r--r--  ${author.padEnd(12)}  ${date.padEnd(13)}  ${filename}`;
+                    output += line + '\n';
+                });
+                
+                term.echo(output);
+            },
+            error: function() {
+            term.echo("Error: Could not load posts data");
+            }
+        });
+      
+    }
+
+    var certifications = [
+    
+        
+            '---\n' +
+            '[[b;grey;]Example Cert]\n' +
+            'Date of Completion\n' +
+            
+            'Example Certifying Company\n' +
+            
+            
+            
+            'Badge: \thttps:\/\/www.link.to.badge\n' +
+            
+            '\r',
+        
+    
+    ];
+    
+    var work = [
+    
+    ];
+
+    var education = [
+    
+        
+            '---\n' +
+            '[[b;red;]Instituto Tecnológico de Iguala]\n' +
+            'August 2023 - December 2027\n' +
+            
+                "Computer Engineer degree\n" +
+            
+            "\r",
+        
+    
+    ];
+
+    var projects = [
+    
+        
+            '---\n' +
+            '[[b;red;]Project Red]\n' +
+            'since 2019\n' +
+            'https:\/\/example.com\n' +
+            
+            'Describing red stuff\n' +
+            
+            "\r",
+      
+            '---\n' +
+            '[[b;blue;]Project Blue]\n' +
+            'since 2016\n' +
+            'https:\/\/example.com\/blue\n' +
+            
+            "\r",
+      
+            '---\n' +
+            '[[b;grey;]Project Default]\n' +
+            'Since 2017\n' +
+            'https:\/\/example.com\/default\n' +
+            
+            "\r",
+      
+    
+    ];
+
+    var publications = [
+    
+        
+            '---\n' +
+            '[[b;green;]Machine Learning for Terminal Enthusiasts]\n' +
+            
+            'John Doe, Jane Smith\n' +
+            
+            
+            'Journal of Terminal Computing, Vol. 42\n' +
+            
+            '2025\n' +
+            
+            'https:\/\/example.com\/paper1\n' +
+            
+            
+            'A comprehensive study on ML applications in terminal interfaces\n' +
+            
+            "\r",
+      
+            '---\n' +
+            '[[b;blue;]The Art of ASCII: Modern Approaches]\n' +
+            
+            'John Doe\n' +
+            
+            
+            'International Conference on Text-Based Interfaces (ICTBI)\n' +
+            
+            '2024\n' +
+            
+            'https:\/\/example.com\/paper2\n' +
+            
+            
+            "\r",
+      
+            '---\n' +
+            '[[b;grey;]Understanding Command Line User Experience]\n' +
+            
+            'John Doe, Bob Wilson, Alice Brown\n' +
+            
+            
+            'ACM Transactions on Human-Computer Interaction\n' +
+            
+            '2023\n' +
+            
+            
+            'Research on improving CLI usability and accessibility\n' +
+            
+            "\r",
+      
+    
+    ];
+
+    var skills = [
+    
+        
+            '[[b;grey;]Linux:]\n' +
+            progressBar( 90 ) +
+            '90' + '%\n' +
+            
+            'Using Linux as my daily drive OS since january of 2022.\n' +
+            
+            '\r',
+        
+    
+    ];
+
+    var softSkills = [
+    
+    ];
+  
+    var languages = [
+    
+        
+            '[[b;Blue;]English:]\n' +
+            progressBar( 67 )+ 
+            '67' + '%\n' +
+            
+            'B1-B2 level\n' +
+            
+            '\r',
+        
+            '[[b;Green;]Spanish:]\n' +
+            progressBar( 100 )+ 
+            '100' + '%\n' +
+            
+            'Native\n' +
+            
+            '\r',
+        
+    
+    ];
+
+    var misc = [
+         
+        '[[b;teal;]This Section can have a different command name]\n' +
+        '[[;orange;]Here the title and the content can have different colors\nThe content can be multi\n\nline\n\nAnd spaces       will be respected as well\nThis section will have the default command: misc\nbut you can name it something else with the property\ncommandName: \u003cString\u003e\nGive it a shot and try and uncomment the line \ncommandName: newcommand\nnow instead of misc you can execute the newcommand for this section\nAuto completion will know it too! :D\n]\n',
+         
+    ];
+
+    var source =  '        _______            \n' +
+                  '       |       |           \n' +
+                  '       |       |           \n' +
+                  '       |_______|_______    \n' +
+                  '               |       |   \n' +
+                  '               |       |   \n' +
+                  ' ______________|_______|   \n' +
+                  '|      |       |       |   \n' +
+                  '|      |       |       |   \n' +
+                  '|______|_______|_______|   \n' +
+                  '[[;red;]May the source be with you]\n' +
+                  '[[;grey;]https://github.com/coolapso/hugo-theme-terminalcv\n';
+
+    var all = [ 
+        whois,
+        
+        social(),
+        
+        
+        
+        education,
+        
+        
+        skills,
+        
+        
+        
+        languages,
+        
+        
+        projects,
+        
+        
+        publications,
+        
+        
+        certifications,
+        
+        
+        misc,
+        
+        
+        source,
+        
+    ]
+
+    $('body').terminal(function(command, term) {
+  
+        var useLess = false;
+        
+
+        function echoArray(array, options) {
+            var opts = options || {};
+            
+            if (useLess) {
+                if (opts.raw) {
+                    var content = array[0];
+                    var export_data = term.export_view();
+                    
+                    term.clear();
+                    term.echo(content, {raw: true});
+                    
+                    term.push(function(command) {}, {
+                        prompt: ':',
+                        keydown: function(e) {
+                            if (e.which === 81 || e.which === 113) { 
+                                term.pop();
+                                term.import_view(export_data);
+                                return false;
+                            }
+                        }
+                    });
+                } else {
+                    term.less(array);
+                }
+            } else {
+                for (i = 0; i < array.length; i += 1) {
+                    term.echo(array[i], options || {});
+                }
+            }
+        }
+
+        function catPost(term, postdir) {
+        url = "/posts/" + postdir + "/";
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(data) {
+                
+                echoArray([data], {raw: true});
+            },
+            error: function() {
+                term.echo("Error: Could not load post " + postdir);
+            }
+        });
+    }
+        
+        function progress(percent, width) {
+            var size = Math.round(width*percent/100);
+            var left = '', taken = '', i;
+            for (i=size; i--;) {
+                taken += '=';
+            }
+            if (taken.length > 0) {
+                taken = taken.replace(/=$/, '>');
+            }
+            for (i=width-size; i--;) {
+                left += ' ';
+            }
+            return '[' + taken + left + '] ' + percent + '%';
+        }
+
+        function loading () {
+            var i = 0, size = 30;
+            prompt = term.get_prompt();
+            string = progress(0, size);
+            term.set_prompt(progress);
+            animation = true;
+            (function loop() {
+                string = progress(i++, size);
+                term.set_prompt(string);
+                if (i < 100) {
+                    timer = setTimeout(loop, 10);
+                } else {
+                    term.echo(progress(i, size) + ' [[b;green;]OK]').set_prompt(prompt);
+                    animation = false
+                }
+            })();
+        }
+
+        cmdParts = command.split(/[ ]+/);
+        if (cmdParts[0] == 'less') {
+            useLess = true;
+            cmdParts.shift();
+
+            let target = cmdParts[0];
+
+            if (!target) { 
+                term.echo("less: missing argument");
+                return;
+            } else if (postFilenames.includes(target)) {
+                
+                catPost(term, target);
+                return;
+            } 
+        } 
+                    
+        switch(cmdParts[0]) {
+            case 'whois':
+                
+                echoArray(whois);
+                break;
+            
+            case 'social':
+                
+                echoArray(social());
+                break;
+            
+            
+            
+            case 'education':
+                
+                echoArray(education);
+                break;
+            
+            
+            case 'skills':
+                
+                echoArray(skills);
+                break;
+            
+            
+            
+            case 'languages':
+                
+                echoArray(languages);
+                break;
+            
+            
+            case 'projects':
+                
+                echoArray(projects);
+                break;
+            
+            
+            case 'publications':
+                
+                echoArray(publications);
+                break;
+            
+            case 'certifications':
+                
+                echoArray(certifications);
+                break;
+            case 'newcommand':
+                
+                echoArray(misc);
+                break;
+            case 'help':
+            case '?':
+                term.echo(help);
+                break;
+            case 'all':
+                
+                echoArray(all.flat(1));
+                break;
+            
+            case ':(){:|:&};:':
+                term.echo("nice try");
+                break;
+            case 'source':
+                
+                term.echo(source);
+                break;
+            case 'exit':
+            
+                term.echo("Terminating session, thanks for visiting");
+                loading();
+                setTimeout(function() {
+                  term.pause();
+                  term.clear();
+                  term.echo("[Session completed, the browserwindow can be safely closed]");
+                }, 2000);
+                break;
+            
+            
+            case 'version':
+                term.echo("2.0.0");
+                break;
+            
+            
+            case 'cat':
+                if (cmdParts.length < 2) {
+                    term.echo("Usage: cat <filename>");
+                } else {
+                    var  postdir = cmdParts[1];
+                    catPost(term, postdir);
+                }
+                break;
+            case 'posts':
+            case 'ls':
+                posts(term);
+                break;
+            
+            case '':
+                break;
+            default:
+                term.echo("\nunknown command: " + command + "\n" +
+                          "please type 'help' or '?' for a list of available commands\n");
+        }
+
+    }, {
+
+         
+          greetings: "[[b;white;]‎\n _ __ ___ | || | (_) |__ ____\n| \u0027_ \u0060 _ \\| || |_| | \u0027_ \\_  \/\n| | | | | |__   _| | |_) \/ \/ \n|_| |_| |_|  |_|_\/ |_.__\/___|\n               |__\/\nType \u0027help\u0027 for a list of available commands\n]",
+        
+
+        prompt: '[[;red;][][[;pink;]user@t.erminalCV][[;red;]\\]][[;grey;]-][[;red;][][[;blue;]~\/terminalcv][[;red;]\\]][[;orange;]: ]',
+
+        keydown: function(e, term) {
+            if (animation) {
+                if (e.which == 68 && e.ctrlKey) { 
+                    clearTimeout(timer);
+                    animation = false;
+                    term.echo(string + ' [[b;red;]FAIL]')
+                    .set_prompt(prompt);
+                }
+                return false;
+            }
+        },
+        autocompleteMenu: true,
+        
+          
+          completion: function(string) {
+              var command = this.get_command();
+              var parts = command.split(/\s+/);
+              var commandName = parts[0];
+              
+              
+              if (parts.length === 1 || command.indexOf(' ') === -1) {
+                  return Object.keys(commands).filter(function(cmd) {
+                      return cmd.startsWith(string);
+                  });
+              }
+              
+              
+              if (commands[commandName] && commands[commandName].args) {
+                  return commands[commandName].args.filter(function(arg) {
+                      return arg.startsWith(string);
+                  });
+              }
+          }
+        
+        
+    });
+});
+</script>
+
+        </body>
+</html>
