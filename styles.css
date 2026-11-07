@@ -1,0 +1,97 @@
+hr {
+	color: #fafafa;
+}
+
+body {
+    background-color: #1D1F21;
+    width: 90%;
+    max-width: 60em;
+    margin: 1.5em auto;
+    font-family: c059, serif;
+    color: #d0b892;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0.32em 0em 0em 0em;
+}
+
+img {
+    display: block;
+    margin: auto;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Wrap block divs with this class */
+.columns {
+	columns: 2;
+}
+
+.columns ul {
+	margin-top: 0em;
+}
+
+/* Use this to make unbreakable elements when using columns */
+.block {
+	break-inside: avoid;
+}
+
+@media print {
+	.no-print, .no-print *, footer {
+		display: none !important;
+	}
+	.address {
+		overflow: visible;
+		white-space: wrap;
+		word-break: break-all;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	body {
+		width: 90%;
+		font-size: 1.1em;
+	}
+
+	.columns {
+		columns: 1;
+	}
+}
+
+p {
+	text-align: justify;
+}
+
+a {
+	color: var(--hl);
+}
+
+a:visited {
+	color: var(--hl3);
+}
+
+a:hover {
+	color: var(--hl2);
+}
+
+ul {
+	padding: 0 0 0 1em;
+}
+
+li {
+	margin: 0 0 0.1em 0;
+}
+
+:root {
+	--hl:	#4084d6;
+	--hl2:	#ed4737;
+	--hl3:	#dab6fc;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--fg:	#d0b892;
+		--bg:	#1D1F21;
+	}
+}
